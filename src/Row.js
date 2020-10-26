@@ -3,16 +3,21 @@ import axios from './axios'
 import requests from './request';
 
 
+
+const baseURL = 'https://api.themoviedb.org/3';
+const apiKey = '72e531949e0995e3b76bc00c6689bdc7'
 export const Row = ({title,fetchUrl}) => {
     const [movies, setMovie] = useState([]);
-    const  baseURL = "https://api.themoviedb.org/3"
-    console.log(requests.fetchNetflixOriginals)
+    
+    
+   
+   
     useEffect(() => {
-        
+
      async function fetchData() {
          const request = await axios.get(fetchUrl);
          setMovie(request.data.results);
-         console.log(request.data.results);
+        
          
      }
      fetchData();
@@ -24,7 +29,9 @@ export const Row = ({title,fetchUrl}) => {
         <div className="row">
             <h2>{title}</h2>
           {movies.map(movie => (
-               <img src={`${baseURL}${movie.poster_path}`} alt={movie.name}/>
+
+        
+            <img src={`https://api.themoviedb.org/3 ${movie.poster_path}`}  />
           ))}
         </div>
     )
